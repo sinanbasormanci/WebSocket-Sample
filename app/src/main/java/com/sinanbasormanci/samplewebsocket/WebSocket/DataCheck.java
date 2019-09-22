@@ -25,7 +25,7 @@ public class DataCheck {
 
     public void check(String value){
         if (value.contains("-")){
-            if (data != null){
+            if (data != null && Convert.toMItem(value) != null){
                 MItem item = Convert.toMItem(value);
                 if (item != null){
                     for (int i = 0; i < data.getData().size(); i++){
@@ -34,6 +34,8 @@ public class DataCheck {
                         }
                     }
                 }
+            }else{
+                if (listener != null) listener.onNothing();
             }
         }else if (value.toLowerCase().equals("logout")){
             if (listener != null) listener.onLogOut();
